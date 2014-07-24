@@ -1,0 +1,46 @@
+\documentclass{report}
+
+
+\date{\today} 
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{authblk}
+\usepackage{booktabs}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{sectsty}
+\usepackage{pgf}
+
+%\addbibresource{references.bib}
+\hypersetup{pdfborder=0 0 0} 
+
+\author{Robert Sawko}
+\affil{Department of Engineering Computing, Cranfield University}
+\title{Example of for python pgf support}
+
+%Setting a nicer(?) font (which need xetex)
+\defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
+\setmainfont{Liberation Serif}
+
+\begin{document}
+
+\chapter{Example chapter}
+
+Several examples are presented here.
+
+\begin{figure}[b] 
+  \centering
+  \input{graphics/c40.pgf} 
+  \input{graphics/c60.pgf} 
+  \input{graphics/c80.pgf} 
+  \\
+  \input{graphics/legend.pgf} 
+  \caption{Several figures and a legend}
+  \label{fig:problem} 
+\end{figure}
+
+\end{document}
