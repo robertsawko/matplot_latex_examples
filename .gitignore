@@ -1,4 +1,6 @@
 *
 !*.tex
 !.gitignore
-!*.pdf
+!*.py
+!*.dat
+!graphics/
