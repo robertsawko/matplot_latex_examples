@@ -1,5 +1,4 @@
-\documentclass{report}
-
+\documentclass{article}
 
 \date{\today} 
 
@@ -16,19 +15,31 @@
 \usepackage{pgf}
 
 %\addbibresource{references.bib}
+%Get rid of these nasty lines around links
 \hypersetup{pdfborder=0 0 0} 
 
 \author{Robert Sawko}
 \affil{Department of Engineering Computing, Cranfield University}
-\title{Example of for python pgf support}
+\title{Examples with Python PGF support}
 
 %Setting a nicer(?) font (which need xetex)
 \defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
 \setmainfont{Liberation Serif}
 
 \begin{document}
+\maketitle
 
-\chapter{Example chapter}
+\begin{abstract}
+
+  This document presents examples usage of \texttt{matplotlib} together with
+  \LaTeX. We will use the PGF in order to create low-level drawing macros which
+  will be compiled by \textit{xelatex}. We will also cover a generation of
+  figures and legends separately which in some situations is beneficial. 
+\end{abstract}
+
+\section{Introduction}
+
+\section{Example figures}
 
 Several examples are presented here.
 
@@ -43,4 +54,8 @@ Several examples are presented here.
   \label{fig:problem} 
 \end{figure}
 
+\section{Future work}
+\begin{enumerate}
+  \item Include an automated build system like Make or CMake.
+\end{enumerate}
 \end{document}
