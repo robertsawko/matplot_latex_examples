@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[a4paper,12pt]{article}
 
 \date{\today} 
 
@@ -9,9 +9,6 @@
 \usepackage{fontspec}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage{multirow}
-\usepackage{rotating}
-\usepackage{sectsty}
 \usepackage{pgf}
 
 %\addbibresource{references.bib}
@@ -52,6 +49,13 @@ in order to run the example. These are the essential bits
 
 Several examples are presented here.
 
+\begin{figure}[b] 
+  \centering
+  \input{graphics/bessel.pgf} 
+  \\
+  \caption{I am printing word "time" just to prove that the fonts are matched.}
+  \label{fig:first} 
+\end{figure}
 \begin{figure}[b] 
   \centering
   \input{graphics/c40.pgf} 

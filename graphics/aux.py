@@ -24,21 +24,16 @@ def set_plt_params(relative_fig_width=1.0, landscape=True, page_width=345.0):
     fig_size = [fig_width, fig_height]
     params = {
         'font.family': 'serif',
-        'axes.labelsize': 9,
-        'text.fontsize': 7,
-        'legend.fontsize': 9,
-        'lines.markersize': 3,
-        'xtick.labelsize': 7,
-        'ytick.labelsize': 7,
+        'axes.labelsize': 10.95,
+        # 'text.fontsize': 7,
+        # 'legend.fontsize': 9,
+        # 'lines.markersize': 3,
+        # 'xtick.labelsize': 7,
+        # 'ytick.labelsize': 7,
         'text.usetex': True,
         'figure.figsize': fig_size,
         'pgf.texsystem': "xelatex",
         'pgf.rcfonts': False,
-        'pgf.preamble': [
-            r"\usepackage{fontspec}",
-            r"\defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}",
-            r"\setmainfont{Liberation Serif}",
-        ]
     }
 
     plt.rcParams.update(params)

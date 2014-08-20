@@ -9,7 +9,15 @@ What you're getting out of it is:
 # Prerequsites
 
 # How to use
+If you wish to compile you need to
 
+ 1. Create the figures.
+ 1. Compile the document
+
+To create the figures `cd` into the directory graphs and make the figures using
+python2 or associated Makefile.
+
+Then cd back to the tex directory and run
 ```
 xelatex example.tex
 ```
