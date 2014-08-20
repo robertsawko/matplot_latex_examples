@@ -13,7 +13,7 @@ l2, = plt.plot(x, jn1)
 l3, = plt.plot(x, jn2)
 
 plt.ylabel('ordinate')
-plt.xlabel('$x$ abscissa')
+plt.xlabel('abscissa')
 plt.suptitle(
     r"$J_\alpha(x) = \sum_{m=0}^\infty\frac{(-1)^m}{m!\Gamma(m+\alpha+1)}"
     + r"\left(\frac{x}{2}\right)^{2m+\alpha}$")
