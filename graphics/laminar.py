@@ -42,6 +42,7 @@ l1, = ax.plot(range(10))
 l2, = ax.plot(range(10), linestyle='None', marker='s', alpha=0.5)
 # Unfortunately you need to adjust the numbers below manually
 legendfig = plt.figure(figsize=(3.9, 0.39))
-legendfig.legend([l1, l2], ["Analytical solution", "CFD solution"], ncol=2)
+l = legendfig.legend([l1, l2], ["Analytical solution", "CFD solution"], ncol=2)
+l.get_frame().set_facecolor('none')
 # Save - note that we don't use tight layout
 legendfig.savefig("legend.pgf", transparent=True, pad_inches=0)

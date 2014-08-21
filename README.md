@@ -8,16 +8,21 @@ What you're getting out of it is:
 
 # Prerequsites
 
+ * `python2-matplotlib`
+ * `python2-numpy`
+ * `xelatex`
+
 # How to use
 If you wish to compile you need to
 
  1. Create the figures.
  1. Compile the document
 
-To create the figures `cd` into the directory graphs and make the figures using
-python2 or associated Makefile.
-
-Then cd back to the tex directory and run
 ```
+cd graphics
+python2 bessel.py
+python2 laminar.py
+# go back and compile the main document
+cd ../
 xelatex example.tex
 ```
