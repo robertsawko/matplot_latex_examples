@@ -10,7 +10,9 @@ from mpltools import style
 style.use('ggplot')
 
 
-def set_plt_params(relative_fig_width=1.0, landscape=True, page_width=345.0):
+def set_plt_params(
+        relative_fig_width=1.0, landscape=True, page_width=345.0, rescale_h=1):
+
     fig_width_pt = page_width * relative_fig_width
     inches_per_pt = 1.0 / 72.27               # Convert pt to inch
     golden_mean = (np.sqrt(5.0) - 1.0) / 2.0  # Aesthetic ratio
@@ -21,6 +23,7 @@ def set_plt_params(relative_fig_width=1.0, landscape=True, page_width=345.0):
     else:
         fig_height = fig_width / golden_mean  # height in inches
 
+    fig_height = fig_height * rescale_h
     fig_size = [fig_width, fig_height]
     params = {
         'font.family': 'serif',

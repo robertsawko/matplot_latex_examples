@@ -6,3 +6,6 @@
 !graphics/
 !README.md
 !.vimrc
+!*.csv
+!graphics/analytic
+!graphics/numerical

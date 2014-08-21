@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt]{article}
 
-\date{\today} 
+\date{\today}
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -13,7 +13,7 @@
 
 %\addbibresource{references.bib}
 %Get rid of these nasty lines around links
-\hypersetup{pdfborder=0 0 0} 
+\hypersetup{pdfborder=0 0 0}
 
 \author{Robert Sawko}
 \affil{Department of Engineering Computing, Cranfield University}
@@ -31,14 +31,14 @@
   This document presents examples usage of \texttt{matplotlib} together with
   \LaTeX. We will use the PGF in order to create low-level drawing macros which
   will be compiled by \texttt{xelatex}. We will also cover a generation of
-  figures and legends separately which in some situations is beneficial. 
+  figures and legends separately which in some situations is beneficial.
 \end{abstract}
 
 \section{Introduction}
 This document is a response to one of the questions about \texttt{matplotlib}
 capability to generate graphs in \LaTeX\ format. A potential benefit of this is
 a better integration of the document with the graphs as the fonts, font sizes
-etc.\ will be obtained during the compilation of the document. 
+etc.\ will be obtained during the compilation of the document.
 
 The integration is achieved via PGF backend. To find out more about backends
 read \href{http://matplotlib.org/faq/usage_faq.html#what-is-a-backend}{this}.
@@ -74,25 +74,28 @@ repeated on each graph. Also, having legend outside of the plot makes the plot
 clearer and there is nothing to obscure the results.
 
 
-\begin{figure}[b] 
+\begin{figure}[t]
   \centering
   %note that we're using \input!
-  \input{graphics/bessel.pgf} 
+  \input{graphics/bessel.pgf}
   \\
   \caption{I am printing word "abscissa" just to prove that the fonts are
   matched. We're also admiring a \LaTeX\ equations on the graph.}
-  \label{fig:latex} 
+  \label{fig:latex}
 \end{figure}
-\begin{figure}[b] 
-  \centering
-  \input{graphics/c40.pgf} 
-  \input{graphics/c60.pgf} 
-  \input{graphics/c80.pgf} 
-  \\
-  \input{graphics/legend.pgf} 
+\begin{figure}[p]
+  \begin{center}
+    \input{graphics/ReG0150ReL0150.pgf}
+    \input{graphics/ReG1500ReL0150.pgf}
+    \\
+    \input{graphics/ReG0150ReL1500.pgf}
+    \input{graphics/ReG1500ReL1500.pgf}
+    \\
+    \input{graphics/legend.pgf}
+  \end{center}
   \caption{Several figures and a legend. Note the convenience of having the
   legend in the actual document. It doesn't have to be assigned to any subplot.}
-  \label{fig:several} 
+  \label{fig:several}
 \end{figure}
 
 \section{Future work}

@@ -1,56 +1,47 @@
-from header import *
-import glob
-import matplotlib.ticker
+from aux import *
 
-def task_alpha():
-  def plot_fig(caseid='80',draw_legend=False):
-    #Load data
-    kEps = np.loadtxt("kEps-c%s.csv" % caseid, float,delimiter=',', skiprows=1)
-    LRR = np.loadtxt("LRR-c%s.csv" % caseid, float,delimiter=',', skiprows=1)
-    ngan = np.loadtxt("exp%s.dat" % caseid, float)
 
-    set_plt_params(0.29,False)
-    fig = plt.figure()
-    ax = fig.gca();
+Re_gas = [150, 1500]
+Re_liquid = [150, 1500]
 
-    plt.ylim((0, 1.05))  
-    plt.xlim((-0.05, 1.05))  
-    plt.ylabel('Dimensionless height $x_2/H$')  
-    plt.xlabel('Water fraction $\\alpha_{w}$')
-    fig.suptitle("Inlet {0}% water-cut".format(caseid), fontsize=7)
+# Note that I am using formatting strings
+# See this
+# https://docs.python.org/2/library/string.html#string-formatting
 
-    lines = []
-    line, = ax.plot(1 - ngan[:, 0], ngan[:, 1], linestyle='None',marker='s',markersize=4)
-    lines.append(line)
+file_name_analytic = "./analytic/ReG{0:0>4d}ReL{1:0>4d}.csv"
+file_name_numerical = "./numerical/ReG{0:0>4d}ReL{1:0>4d}.csv"
+file_name_graph = "./ReG{0:0>4d}ReL{1:0>4d}.pgf"
 
-    line, = ax.plot(1 - kEps[:, 10], kEps[:, 20] / 0.019 / 2 + 0.5,marker='v', markevery=5)
-    lines.append(line)
+for Re_g in Re_gas:
+    for Re_l in Re_liquid:
+        analytic = np.genfromtxt(file_name_analytic.format(Re_g, Re_l))
+        numerical = np.genfromtxt(file_name_numerical.format(Re_g, Re_l))
+        set_plt_params(0.49, False, rescale_h=0.8)
+        fig = plt.figure()
+        ax = fig.gca()
+        plt.ylabel('Dimensionless height $x_2/H$')
+        plt.xlabel(r'Dimensionless velocity $u_1/U_\textrm{sg}')
 
-    line, = ax.plot(1 - LRR[:, 16], LRR[:, 26] / 0.019 / 2 + 0.5,marker='+', markevery=5)
-    lines.append(line)
+        ax.plot(analytic[:, 1], analytic[:, 0])
+        ax.plot(
+            numerical[:, 1], numerical[:, 0], linestyle='None',
+            marker='s', markevery=1, markersize=3, alpha=0.5)
 
-    fig.savefig("c%s.pgf" % caseid,
-        transparent=True, bbox_inches='tight', pad_inches=0)
+        fig.suptitle(
+            "$Re_l={0} \quad Re_g={1}$".format(Re_g, Re_l))
 
-    if draw_legend == True:
-      figlegend = plt.figure(figsize=(3.1,0.29))
-      #figlegend = plt.figure()
-      lgnd=figlegend.legend(lines, (["Ngan (2010)", "$k$-$\\epsilon$ model", "LRR"]), ncol=3)
-      lgnd.get_frame().set_facecolor('none')
-      figlegend.savefig("legend.pgf", transparent=True, pad_inches=0)
+        fig.savefig(
+            file_name_graph.format(Re_g, Re_l),
+            transparent=True, bbox_inches='tight', pad_inches=0)
 
-  def plot_all_figs() : 
-    plot_fig(draw_legend=True)
-
-    remainings_figs_id = ['60','40']
-    for fig_id in remainings_figs_id : 
-      plot_fig(fig_id)
-
-    plt.close("all")
-
-  return {
-      'actions': [plot_all_figs],
-      'file_dep': ( ["dodo.py", "header.py"] ),
-      'targets': ["alpha-80.pdf"],
-  }
-
+# In order to get a legend separately we draw a dummy figure
+dummyfig = plt.figure()
+ax = dummyfig.gca()
+# The lines must be created with the same properties
+l1, = ax.plot(range(10))
+l2, = ax.plot(range(10), linestyle='None', marker='s', alpha=0.5)
+# Unfortunately you need to adjust the numbers below manually
+legendfig = plt.figure(figsize=(3.9, 0.39))
+legendfig.legend([l1, l2], ["Analytical solution", "CFD solution"], ncol=2)
+# Save - note that we don't use tight layout
+legendfig.savefig("legend.pgf", transparent=True, pad_inches=0)
