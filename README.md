@@ -18,7 +18,7 @@ If you wish to compile you need to
  1. Create the figures.
  1. Compile the document
 
-```
+```bash
 cd graphics
 python2 bessel.py
 python2 laminar.py
