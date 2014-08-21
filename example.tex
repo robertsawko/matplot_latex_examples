@@ -17,7 +17,7 @@
 
 \author{Robert Sawko}
 \affil{Department of Engineering Computing, Cranfield University}
-\title{Examples with Python PGF support}
+\title{Python and PGF}
 
 %Setting a nicer(?) font (which need xetex)
 \defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
@@ -35,15 +35,33 @@
 \end{abstract}
 
 \section{Introduction}
-This document presents the results of PGF output and \LaTeX symbiosis. It also
-gives guidelines on how to achieve it. It is divided as follows.
+This document is a response to one of the questions about \texttt{matplotlib}
+capability to generate graphs in \LaTeX\ format. A potential benefit of this is
+a better integration of the document with the graphs as the fonts, font sizes
+etc.\ will be obtained during the compilation of the document. 
 
-\subsection{Prerequisites}
-I tried to keep the document minimal so that you should not need many packages
-in order to run the example. These are the essential bits
-\begin{enumerate}
-  \item \texttt{python2-matplotlib}
-\end{enumerate}
+The integration is achieved via PGF backend. To find out more about backends
+read \href{http://matplotlib.org/faq/usage_faq.html#what-is-a-backend}{this}.
+PGF backend is described \href{http://matplotlib.org/users/pgf.html}{here}. PGF
+stands for Portable Network Graphics - more can be found here.
+
+Admittedly, \texttt{matplotlib} is a bit more involved than \texttt{gnuplot}.
+You often need to invoke more commands. On the other hand it is more flexible
+and can be used in any python code with potential loops over directory
+structure. This cannot be achieved with \texttt{gnuplot} without some scripting
+which quickly gets more involved than a readable Python code. Also,
+\texttt{matplotlib} seems to offer more functionality and is more flexible.
+Personally, I use \texttt{gnuplot} for interactive plotting as I can obtain
+fairly complex plots straight from the files. I would use \texttt{matplotlib}
+for larger documents.
+
+Note that I tried to keep the setup simple without a use of fancy build system
+or self configuration tools. Graph generation and document compilation could be
+run with a single command. The use would become very simple but the
+configuration, the scripts etc would have become more complex. For now the
+purpose is to demonstrate PGF and \LaTeX integration and show some good
+practices. In the future I may add branches for people who would like to see how
+to run this with \texttt{make} or \texttt{cmake}.
 
 \section{Example figures}
 
@@ -62,7 +80,7 @@ clearer and there is nothing to obscure the results.
   \input{graphics/bessel.pgf} 
   \\
   \caption{I am printing word "abscissa" just to prove that the fonts are
-  matched. We're also admiring the \LaTeX\ equations on the graph.}
+  matched. We're also admiring a \LaTeX\ equations on the graph.}
   \label{fig:latex} 
 \end{figure}
 \begin{figure}[b] 
@@ -80,5 +98,7 @@ clearer and there is nothing to obscure the results.
 \section{Future work}
 \begin{enumerate}
   \item Include an automated build system like Make or CMake.
+  \item Include different branches for advanced and novice users.
+  \item Write up a proper reference section.
 \end{enumerate}
 \end{document}
