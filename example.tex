@@ -5,11 +5,14 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{authblk}
-\usepackage{booktabs}
 \usepackage{fontspec}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{pgf}
+
+% Biblatex support for references
+\usepackage[style=numeric]{biblatex}
+\addbibresource{references.bib}
 
 %\addbibresource{references.bib}
 %Get rid of these nasty lines around links
@@ -19,7 +22,7 @@
 \affil{Department of Engineering Computing, Cranfield University}
 \title{Python and PGF}
 
-%Setting a nicer(?) font (which need xetex)
+%Setting a nicer(?) TrueType font (which needs xetex)
 \defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
 \setmainfont{Liberation Serif}
 
@@ -28,34 +31,36 @@
 
 \begin{abstract}
 
-  This document presents examples usage of \texttt{matplotlib} together with
+  This document presents example usage of \texttt{matplotlib} together with
   \LaTeX. We will use the PGF in order to create low-level drawing macros which
   will be compiled by \texttt{xelatex}. We will also cover a generation of
-  figures and legends separately which in some situations is beneficial.
+  figures and legend separately which in some situations is beneficial.
+
 \end{abstract}
 
 \section{Introduction}
-This document is a response to one of the questions about \texttt{matplotlib}
-capability to generate graphs in \LaTeX\ format. A potential benefit of this is
-a better integration of the document with the graphs as the fonts, font sizes
-etc.\ will be obtained during the compilation of the document.
+I prepared these files in a response to one of the questions about
+\texttt{matplotlib} capability to generate graphs in \LaTeX\ format. The main
+advantage of this is a better integration of the document with the graphs as the
+fonts, font sizes etc.\ will be obtained during the compilation of the document
+rather then each figure. This may eliminate invisible labels, ticks and other
+artifacts haunting people writing large documents.
 
 The integration is achieved via PGF backend. To find out more about backends
-read \href{http://matplotlib.org/faq/usage_faq.html#what-is-a-backend}{this}.
-PGF backend is described \href{http://matplotlib.org/users/pgf.html}{here}. PGF
-stands for Portable Network Graphics - more can be found here.
+read \cite{backend}. PGF backend is described \cite{pgf}. PGF stands for Portable
+Network Graphics - more can be found in \cite{pgfwiki}.
 
 Admittedly, \texttt{matplotlib} is a bit more involved than \texttt{gnuplot}.
-You often need to invoke more commands. On the other hand it is more flexible
-and can be used in any python code with potential loops over directory
-structure. This cannot be achieved with \texttt{gnuplot} without some scripting
-which quickly gets more involved than a readable Python code. Also,
-\texttt{matplotlib} seems to offer more functionality and is more flexible.
-Personally, I use \texttt{gnuplot} for interactive plotting as I can obtain
-fairly complex plots straight from the files. I would use \texttt{matplotlib}
-for larger documents.
+You often need to invoke more commands which are not intuitively clear. On the
+other hand it is more flexible and can be used in any python code with potential
+loops over directory structure. This cannot be achieved with bare
+\texttt{gnuplot} without some scripting which quickly gets more involved than a
+readable Python code. Also, \texttt{matplotlib} seems to offer more
+functionalities. Personally, I use \texttt{gnuplot} for interactive plotting as
+I can obtain plots straight from the files. I use \texttt{matplotlib} for larger
+final documents.
 
-Note that I tried to keep the setup simple without a use of fancy build system
+Note that I tried to keep the setup simple without a use of fancy build systems
 or self configuration tools. Graph generation and document compilation could be
 run with a single command. The use would become very simple but the
 configuration, the scripts etc would have become more complex. For now the
@@ -66,12 +71,12 @@ to run this with \texttt{make} or \texttt{cmake}.
 \section{Example figures}
 
 Several examples are presented here. On figure~\ref{fig:latex} we are simply
-looking at the capability of plotting via pgf. Figure~\ref{fig:several} we are
-mainly looking at using legend as separate graph that is only tied to the actual
+looking at the capability of plotting via PGF\@. Figure~\ref{fig:several} we are
+mainly looking at using legend as a separate graph that is only tied to the actual
 plots at the level of the document. This approach is beneficial if you are
 plotting many figures of the same type and the legend would have been repeated
-on each graph. Also, having legend outside of the plot makes the plot clearer
-and there is nothing to obscure the results.
+on each graph. Also, having a legend outside of the plot makes the plot clearer
+as there is nothing to obscure the results.
 
 
 \begin{figure}[t]
@@ -103,6 +108,7 @@ and there is nothing to obscure the results.
 \begin{enumerate}
   \item Include an automated build system like Make or CMake.
   \item Include different branches for advanced and novice users.
-  \item Write up a proper reference section.
 \end{enumerate}
+
+\printbibliography
 \end{document}

@@ -14,3 +14,5 @@ set spell
 "Ctrl+n and you will automatically scroll.
 set iskeyword+=
 
+"Don't need to open any of these files ever
+set wildignore+=*.aux,*.bbl,*.log,*.out
