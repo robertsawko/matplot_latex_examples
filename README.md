@@ -20,6 +20,7 @@ What are the benefits of doing it this way:
   * fontspec for TrueType fonts
   * hyperref
   * pgf
+ * Biber for bibliography support (not using Bibtex!)
 
 # How to use
 If you wish to compile you need to
