@@ -36,8 +36,8 @@ python2 laminar.py
 # go back and compile the main document
 cd ../
 xelatex example.tex
-# to get 
-biber example
+# to get bibliography
+biber example.tex
 # to finish off
 xelatex example.tex
 ```
