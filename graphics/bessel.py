@@ -24,6 +24,6 @@ legend = plt.legend(
     loc='upper right')
 
 # Take out the colour from the legend
-legend.get_frame().set_facecolor('1')
+legend.get_frame().set_facecolor('none')
 
 plt.savefig('bessel.pgf', transparent=True, bbox_inches='tight')
