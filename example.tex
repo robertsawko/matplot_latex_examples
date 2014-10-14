@@ -39,16 +39,17 @@
 \end{abstract}
 
 \section{Introduction}
+
 I prepared these files in a response to one of the questions about
 \texttt{matplotlib} capability to generate graphs in \LaTeX\ format. The main
-advantage of this is a better integration of the document with the graphs as the
+advantage of this is better integration of the document with the graphs as the
 fonts, font sizes etc.\ will be obtained during the compilation of the document
-rather then each figure. This may eliminate invisible labels, ticks and other
+rather than each figure. This may eliminate invisible labels, ticks and other
 artifacts haunting people writing large documents.
 
 The integration is achieved via PGF backend. To find out more about backends
-read \cite{backend}. PGF backend is described \cite{pgf}. PGF stands for Portable
-Network Graphics - more can be found in \cite{pgfwiki}.
+read \cite{backend}. PGF backend is described \cite{pgf}. PGF stands for
+Portable Network Graphics - more can be found in \cite{pgfwiki}.
 
 Admittedly, \texttt{matplotlib} is a bit more involved than \texttt{gnuplot}.
 You often need to invoke more commands which are not intuitively clear. On the
@@ -108,6 +109,7 @@ as there is nothing to obscure the results.
 \begin{enumerate}
   \item Include an automated build system like Make or CMake.
   \item Include different branches for advanced and novice users.
+  \item Check if is compatible Windows!
 \end{enumerate}
 
 \printbibliography
